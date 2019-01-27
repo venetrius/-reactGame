@@ -129,6 +129,7 @@ class Game extends React.Component {
 
   jumpTo(step) {
     this.setState({
+      history: this.state.history,
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
@@ -180,7 +181,7 @@ class Game extends React.Component {
       /*const desc = move ?
         'Go to move #' + move + ' ' + ' move: ' + (move % 2 != 0 ? 'X' : '0' ) + ' ' + this.state.moves[move-1]:
         'Go to game start';*/
-        const index = (move ? (this.state.isAscending ? move : this.state.stepNumber - move + 1) : null);
+        const index = (move ? (this.state.isAscending ? move : this.state.history.length - move) : move);
         const desc = move ?
         'Go to move #' + index + ' ' + ' move: ' + (index % 2 != 0 ? 'X' : '0' ) + ' ' + this.state.moves[index-1]:
         'Go to game start';
